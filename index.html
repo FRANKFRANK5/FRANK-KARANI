@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRANK KARANI | Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .portfolio-banner {
+            width: 100%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, #0f172a 0%, #0b1329 100%);
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #1e293b;
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #10b981;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #10b981;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            padding: 60px 50px;
+            gap: 60px;
+        }
+
+        .avatar-container {
+            flex-shrink: 0;
+        }
+
+        .avatar-frame {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            padding: 4px;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .actual-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #1e293b;
+            border: 4px solid #0f172a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .actual-photo i {
+            font-size: 60px;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .actual-photo span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 1.5px;
+        }
+
+        .hero-text {
+            flex-grow: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bullets-container {
+            margin-bottom: 25px;
+        }
+
+        .bullet-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bullet-line span {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .bio-quote {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.7;
+            border-left: 4px solid #10b981;
+            padding-left: 20px;
+            margin-bottom: 35px;
+            font-style: italic;
+            background-color: rgba(30, 41, 59, 0.3);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #10b981;
+            color: #0b0f19;
+        }
+
+        .btn-primary:hover {
+            background-color: #059669;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: 1px solid #334155;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .domains-footer {
+            background-color: #090d16;
+            border-top: 1px solid #1e293b;
+            padding: 25px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .domains-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 2px;
+        }
+
+        .badge-list {
+            display: flex;
+            gap: 15px;
+        }
+
+        .domain-badge {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid #223147;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-cyber i { color: #f43f5e; }
+        .badge-ai i { color: #3b82f6; }
+        .badge-osint i { color: #eab308; }
+        .badge-net i { color: #10b981; }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+            .bio-quote {
+                border-left: none;
+                border-top: 4px solid #10b981;
+                border-radius: 0 0 8px 8px;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+            .domains-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .badge-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-banner">
+        
+        <div class="navbar">
+            <div class="logo">FRANK<span>KARANI</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Certifications</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+
+        <div class="hero-section">
+            
+            <div class="avatar-container">
+                <div class="avatar-frame">
+                    <div class="actual-photo">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>[ PHOTO ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-text">
+                <h1>Frank Karani</h1>
+                <div class="tagline">
+                    <i class="fa-solid fa-graduation-cap"></i> Cybersecurity Student @ IAA Arusha
+                </div>
+                
+                <div class="bullets-container">
+                    <div class="bullet-line"><span>>_</span> National CTF Competitor (TCRA Top 50)</div>
+                    <div class="bullet-line"><span>>_</span> Aspiring AI Red Teamer & Pen Tester</div>
+                </div>
+
+                <div class="bio-quote">
+                    "Securing the digital ecosystem through practical execution, deep intelligence, and offensive security testing."
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="domains-footer">
+            <div class="domains-title">Core Focus Areas</div>
+            <div class="badge-list">
+                <div class="domain-badge badge-cyber"><i class="fa-solid fa-mask"></i> Ethical Hacking</div>
+                <div class="domain-badge badge-ai"><i class="fa-solid fa-robot"></i> AI Security & LLMs</div>
+                <div class="domain-badge badge-osint"><i class="fa-solid fa-magnifying-glass"></i> OSINT & SOCMINT</div>
+                <div class="domain-badge badge-net"><i class="fa-solid fa-server"></i> Network Defense</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
