@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import WriteUpFeed from './writeupFeed'; // Fetching your dynamic cyber database reports
+import WriteUpFeed from './WriteUpFeed'; // Importing clean dynamic report feed
 import Login from './Login';
 import AddWriteUp from './AddWriteUp';
 import { apiService } from './apiService';
@@ -9,7 +9,7 @@ function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-  // Authenticate session on client initialization
+  // Authenticate session on client initialization layer
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (token) setIsAdmin(true);
@@ -26,12 +26,12 @@ function App() {
     alert('Logged out securely.');
   };
 
-  // Force re-fetch inside WriteUpFeed component on new entry deployment
+  // Force re-fetch inside child feed layer when a new exploit write-up drops
   const handleWriteUpAdded = () => {
     setRefreshTrigger(prev => prev + 1);
   };
 
-  // Local storage mapping for academic & professional certifications (Store PDFs in frontend/public/certificates/)
+  // Local storage mapping for certificates (PDF files stored in public/certificates/)
   const certificates = [
     { id: 1, title: 'TCRA CyberChampions Top 50 National Certificate', fileUrl: '/certificates/tcra_2025.pdf', date: '2025/2026' },
     { id: 2, title: 'picoCTF Bronze & Silver League Achievement', fileUrl: '/certificates/picoctf_league.pdf', date: '2026' },
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div style={styles.appContainer}>
-      {/* --- TOP NAVBAR NAVIGATION LAYER --- */}
+      {/* --- TOP NAVBAR NAVIGATION SYSTEM --- */}
       <nav style={styles.navbar}>
         <div style={styles.navBrand}>⚡ FRANK.SYS</div>
         <div style={styles.navLinks}>
@@ -55,7 +55,7 @@ function App() {
         </div>
       </nav>
 
-      {/* --- PRIVILEGED ADMINISTRATIVE PANEL --- */}
+      {/* --- SECURE PRIVILEGED ADMINISTRATIVE PANEL --- */}
       {isAdmin && (
         <div style={styles.adminDashboard}>
           <div style={styles.adminBadge}>👑 Admin Session Active</div>
@@ -63,13 +63,16 @@ function App() {
         </div>
       )}
 
-      {/* --- HERO PROFILE MATRIX (#home) --- */}
+      {/* --- MAIN HERO MATRIX SECTION (#home) --- */}
       <section id="home" style={styles.heroSection}>
         <div style={styles.mainCard}>
           <div style={styles.profileRow}>
+            {/* AVATAR DOCK CONTAINER */}
             <div style={styles.avatarContainer}>
-              <img src="/my-profile-pic.jpg" alt="Frank" style={styles.avatarImg} />
+              <div style={styles.avatarPlaceholder}>[ 4PP3X ]</div>
             </div>
+            
+            {/* TERMINAL DETAILS LAYOUT */}
             <div style={styles.bioDetails}>
               <h1 style={styles.nameTitle}>Frank Karani</h1>
               <h3 style={styles.studentBadge}>&gt;_ Cybersecurity Freshman @ IAA 🇹🇿</h3>
@@ -81,7 +84,9 @@ function App() {
               </div>
             </div>
           </div>
-          9  <div style={styles.quoteBox}>
+          
+          {/* SAFE ENGLISH-ONLY QUOTE DESCRIPTOR */}
+          <div style={styles.quoteBox}>
             <p style={styles.quoteText}>
               "Securing the digital frontier, one vulnerability at a time. Passionate about understanding the attacker's mindset to build unbreakable defenses and dominating upcoming high-tier cybersecurity operations."
             </p>
@@ -89,7 +94,7 @@ function App() {
         </div>
       </section>
 
-      {/* --- PUBLIC FILE STORAGE SYSTEM (#certifications) --- */}
+      {/* --- 1. DOWNLOAD GATEWAY ARCHIVES FOR CERTIFICATES (#certifications) --- */}
       <section id="certifications" style={styles.sectionWrapper}>
         <h2 style={styles.sectionHeading}>[🏆] CERTIFICATIONS & ARCHIVES</h2>
         <div style={styles.certGrid}>
@@ -100,7 +105,6 @@ function App() {
                 <h4 style={styles.certTitle}>{cert.title}</h4>
                 <p style={styles.certDate}>Issued: {cert.date}</p>
               </div>
-              {/* Endpoint connection download gateway */}
               <a href={cert.fileUrl} download style={styles.downloadBtn}>
                 Download PDF ⬇️
               </a>
@@ -109,7 +113,7 @@ function App() {
         </div>
       </section>
 
-      {/* --- DYNAMIC LOGS AND REPORTS STORAGE (#writeups) --- */}
+      {/* --- 2. SECURITY INTRUSION LABORATORY FEED (#writeups) --- */}
       <section id="writeups" style={styles.sectionWrapper}>
         <h2 style={styles.sectionHeading}>[💻] RECENT CYBER WRITE-UPS & POF</h2>
         <div style={styles.feedContainer}>
@@ -117,7 +121,7 @@ function App() {
         </div>
       </section>
 
-      {/* --- MIDDLEWARE MODAL AUTHENTICATION INTERFACE --- */}
+      {/* --- AUTH GATEWAY MIDDLEWARE MODAL LAYER --- */}
       {showLoginModal && !isAdmin && (
         <div style={styles.modalOverlay} onClick={() => setShowLoginModal(false)}>
           <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -133,7 +137,7 @@ function App() {
   );
 }
 
-// Enterprise Cyber Layout Theme styles
+// Global Clean Cyber Terminal Layout Stylesheet
 const styles = {
   appContainer: { backgroundColor: '#0f172a', minHeight: '100vh', fontFamily: 'monospace', color: '#f8fafc', paddingBottom: '4rem' },
   navbar: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#1e293b', borderBottom: '1px solid #334155', position: 'sticky', top: 0, zIndex: 100 },
@@ -147,15 +151,15 @@ const styles = {
   heroSection: { display: 'flex', justifyContent: 'center', padding: '3rem 1rem 1rem 1rem' },
   mainCard: { backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: '12px', padding: '2rem', width: '100%', maxWidth: '900px' },
   profileRow: { display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' },
-  avatarContainer: { width: '180px', height: '180px', borderRadius: '50%', border: '3px solid #06b6d4', overflow: 'hidden' },
-  avatarImg: { width: '100%', height: '100%', objectFit: 'cover' },
+  avatarContainer: { width: '150px', height: '150px', borderRadius: '50%', border: '3px solid #06b6d4', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#0f172a' },
+  avatarPlaceholder: { color: '#06b6d4', fontWeight: 'bold', fontSize: '1.1rem' },
   bioDetails: { flex: 1 },
-  nameTitle: { fontSize: '2.5rem', margin: '0 0 0.5rem 0' },
+  nameTitle: { fontSize: '2.5rem', margin: '0 0 0.5rem 0', color: '#fff' },
   studentBadge: { color: '#3b82f6', fontSize: '1.1rem', margin: '0 0 1rem 0' },
   terminalList: { display: 'flex', flexDirection: 'column', gap: '0.4rem' },
   listItem: { color: '#cbd5e1', fontSize: '0.95rem' },
   quoteBox: { borderLeft: '4px solid #10b981', backgroundColor: '#070a12', padding: '1rem', marginTop: '1.5rem', borderRadius: '0 8px 8px 0' },
-  quoteText: { margin: 0, color: '#94a3b8', fontStyle: 'italic', fontSize: '0.95rem' },
+  quoteText: { margin: 0, color: '#94a3b8', fontStyle: 'italic', fontSize: '0.95rem', lineHeight: '1.6' },
   sectionWrapper: { maxWidth: '900px', margin: '4rem auto 0 auto', padding: '0 1rem' },
   sectionHeading: { color: '#38bdf8', fontSize: '1.3rem', borderBottom: '1px solid #334155', paddingBottom: '0.5rem', marginBottom: '1.5rem' },
   certGrid: { display: 'flex', flexDirection: 'column', gap: '1rem' },
@@ -164,7 +168,7 @@ const styles = {
   certInfo: { flex: 1 },
   certTitle: { margin: 0, color: '#f1f5f9', fontSize: '1rem' },
   certDate: { margin: '0.2rem 0 0 0', color: '#64748b', fontSize: '0.85rem' },
-  downloadBtn: { backgroundColor: '#0f766e', color: '#fff', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 'bold', transition: 'background 0.2s' },
+  downloadBtn: { backgroundColor: '#0f766e', color: '#fff', textDecoration: 'none', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 'bold' },
   feedContainer: { backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: '12px', padding: '1rem' },
   modalOverlay: { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(15, 23, 42, 0.85)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999, backdropFilter: 'blur(4px)' },
   modalContent: { backgroundColor: '#1e293b', padding: '2rem', borderRadius: '8px', border: '1px solid #334155', maxWidth: '450px', width: '90%' },
