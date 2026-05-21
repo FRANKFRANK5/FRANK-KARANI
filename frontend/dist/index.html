@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRANK KARANI THE COMING TCRA CYBER CHAMPION 2027 (4PP3X)| Portfolio</title>
+    <script src="https://cloudflare.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #a9bff4;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .portfolio-banner {
+            width: 100%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, #0f172a 0%, #0b1329 100%);
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #1e293b;
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-family: monospace;
+        }
+
+        .logo span {
+            color: #10b981;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #10b981;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            padding: 60px 50px;
+            gap: 60px;
+        }
+
+        .avatar-container {
+            flex-shrink: 0;
+        }
+
+        /* MBALIMBALI: Kuboresha fremu ili mtumiaji ajue inaweza kubonyezwa */
+        .avatar-frame {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            padding: 4px;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .avatar-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+        }
+
+        /* MBALIMBALI: Muundo unaoruhusu picha ya asili kuonekana vizuri ikipakiwa */
+        .actual-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #1e293b;
+            border: 4px solid #0f172a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* Kifuniko (Overlay) kitakachotokea mtumiaji akiweka mouse juu ya picha */
+        .avatar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .avatar-frame:hover .avatar-overlay {
+            opacity: 1;
+        }
+
+        .avatar-overlay i {
+            font-size: 32px;
+            color: #10b981;
+            margin-bottom: 5px;
+        }
+
+        .avatar-overlay span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Alama ya awali (Placeholder icon na maandishi) kabla picha haijachaguliwa */
+        .photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .photo-placeholder i {
+            font-size: 60px;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .photo-placeholder span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 1.5px;
+        }
+
+        /* Ficha input ya faili isionekane kwenye muonekano */
+        #imageInput {
+            display: none;
+        }
+
+        .hero-text {
+            flex-grow: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bullets-container {
+            margin-bottom: 25px;
+        }
+
+        .bullet-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bullet-line span {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .bio-quote {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.7;
+            border-left: 4px solid #10b981;
+            padding-left: 20px;
+            margin-bottom: 35px;
+            font-style: italic;
+            background-color: rgba(30, 41, 59, 0.3);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #10b981;
+            color: #0b0f19;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #059669;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: 1px solid #334155;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .domains-footer {
+            background-color: #090d16;
+            border-top: 1px solid #1e293b;
+            padding: 25px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .domains-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 2px;
+        }
+
+        .badge-list {
+            display: flex;
+            gap: 15px;
+        }
+
+        .domain-badge {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid #223147;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-cyber i { color: #f43f5e; }
+        .badge-ai i { color: #3b82f6; }
+        .badge-osint i { color: #eab308; }
+        .badge-net i { color: #10b981; }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+            .bio-quote {
+                border-left: none;
+                border-top: 4px solid #10b981;
+                border-radius: 0 0 8px 8px;
+                text-align: left;
+            }
+            .bullet-line {
+                justify-content: center;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+            .domains-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .badge-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-banner">
+        
+        <!-- NAVBAR SECTION -->
+        <div class="navbar">
+            <div class="logo">FRANK<span>KARANI</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Certifications</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+
+        <!-- HERO SECTION -->
+        <div class="hero-section">
+            
+            <div class="avatar-container">
+                <!-- NYONGEZA: Input iliyofichwa ya kuchagua picha -->
+                <input type="file" id="imageInput" accept="image/*">
+                
+                <!-- Fremu ya picha inayobonyezeka -->
+                <div class="avatar-frame" id="avatarTrigger">
+                    <div class="actual-photo" id="photoDisplay">
+                        <!-- Hapa ndipo patakapowekwa maandishi ya placeholder mara ya kwanza -->
+                        <div class="photo-placeholder" id="placeholderContent">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <span>[ UPLOAD ]</span>
+                        </div>
+                        
+                        <!-- Kifuniko cha kubadilisha picha pindi mouse ikiwekwa juu (Hover Overlay) -->
+                        <div class="avatar-overlay">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Change Photo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-text">
+                <h1>Frank Karani</h1>
+                <div class="tagline">
+                    <i class="fa-solid fa-graduation-cap"></i> Cybersecurity Student @ IAA
+                </div>
+
+                <div class="bullets-container">
+                    <div class="bullet-line"><span>&gt;</span> Ethical Hacker in Training</div>
+                    <div class="bullet-line"><span>&gt;</span> Focused on OWASP Top 10 & Web Security</div>
+                    <div class="bullet-line"><span>&gt;</span> Linux & Network Security Enthusiast</div>
+                    <div class="bullet-line"><span>&gt;</span>Planing to come TCRA cyber champion 2027</div>
+                </div Class="bullet-line"><span>&gt;</span>Cyber security student at IAA First year student</div>div>
+                </div>
+
+                <div class="bio-quote">
+                    "Securing the digital frontier, one vulnerability at a time. Passionate about understanding the attacker's mindset to build unbreakable defenses and the comming  CYBER CHAMPION 2027."
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+                    <a href="#" class="btn btn-secondary"><i class="fa-solid fa-file-arrow-down"></i> View Resume</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DOMAINS FOOTER SECTION -->
+        <div class="domains-footer">
+            <div class="domains-title">Core Focus Areas</div>
+            <div class="badge-list">
+                <div class="domain-badge badge-cyber"><i class="fa-solid fa-shield-halved"></i> PenTesting</div>
+                <div class="domain-badge badge-ai"><i class="fa-solid fa-brain"></i> Ai Security</div>
+                <div class="domain-badge badge-osint"><i class="fa-solid fa-magnifying-glass"></i> OSINT</div>
+                <div class="domain-badge badge-net"><i class="fa-solid fa-network-wired"></i> NetSec</div>
+                <div class="domain- badge badge-net"><i Class="fa-solid fa-network-wired"></i>FORTINE/div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NYONGEZA: JAVASCRIPT YA KUENDESHA MFUMO WA PICHA -->
+    <script>
+        const avatarTrigger = document.getElementById('avatarTrigger');
+        const imageInput = document.getElementById('imageInput');
+        const photoDisplay = document.getElementById('photoDisplay');
+        const placeholderContent = document.getElementById('placeholderContent');
+
+        // 1. Mtumiaji akibonyeza duara la picha, fungua sehemu ya kuchagua faili ya kompyuta
+        avatarTrigger.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // 2. Mtumiaji akishachagua picha, isome na uiweke kama background ya duara husika
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.addEventListener('load', function() {
+                    // Weka picha iliyochaguliwa
+                    photoDisplay.style.backgroundImage = `url(${this.result})`;
+                    // Ficha icon ya mwanzo na maandishi ya "[ UPLOAD ]"
+                    placeholderContent.style.display = 'none';
+                });
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>
