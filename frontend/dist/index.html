@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRANK KARANI THE COMING TCRA CYBER CHAMPION 2027 (4PP3X)| Portfolio</title>
-    <script src="https://cloudflare.com"></script>
+    <title>FRANK KARANI | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #a9bff4;
+            background-color: #0f172a; 
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -84,7 +84,6 @@
             flex-shrink: 0;
         }
 
-        /* MBALIMBALI: Kuboresha fremu ili mtumiaji ajue inaweza kubonyezwa */
         .avatar-frame {
             width: 240px;
             height: 240px;
@@ -106,7 +105,6 @@
             box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
         }
 
-        /* MBALIMBALI: Muundo unaoruhusu picha ya asili kuonekana vizuri ikipakiwa */
         .actual-photo {
             width: 100%;
             height: 100%;
@@ -123,7 +121,6 @@
             position: relative;
         }
 
-        /* Kifuniko (Overlay) kitakachotokea mtumiaji akiweka mouse juu ya picha */
         .avatar-overlay {
             position: absolute;
             top: 0;
@@ -158,7 +155,6 @@
             text-transform: uppercase;
         }
 
-        /* Alama ya awali (Placeholder icon na maandishi) kabla picha haijachaguliwa */
         .photo-placeholder {
             display: flex;
             flex-direction: column;
@@ -180,7 +176,6 @@
             letter-spacing: 1.5px;
         }
 
-        /* Ficha input ya faili isionekane kwenye muonekano */
         #imageInput {
             display: none;
         }
@@ -288,6 +283,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .domains-title {
@@ -301,6 +298,7 @@
         .badge-list {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .domain-badge {
@@ -319,34 +317,24 @@
         .badge-cyber i { color: #f43f5e; }
         .badge-ai i { color: #3b82f6; }
         .badge-osint i { color: #eab308; }
-        .badge-net i { color: #10b981; }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             .hero-section {
                 flex-direction: column;
                 text-align: center;
                 padding: 40px 20px;
-                gap: 40px;
             }
             .bio-quote {
                 border-left: none;
                 border-top: 4px solid #10b981;
                 border-radius: 0 0 8px 8px;
-                text-align: left;
-            }
-            .bullet-line {
-                justify-content: center;
             }
             .cta-buttons {
                 justify-content: center;
             }
-            .domains-footer {
+            .navbar {
                 flex-direction: column;
-                gap: 20px;
-            }
-            .badge-list {
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 15px;
             }
         }
     </style>
@@ -354,110 +342,92 @@
 <body>
 
     <div class="portfolio-banner">
-        
-        <!-- NAVBAR SECTION -->
-        <div class="navbar">
-            <div class="logo">FRANK<span>KARANI</span></div>
+        <nav class="navbar">
+            <div class="logo">FRANK<span>.SYS</span></div>
             <ul class="nav-links">
                 <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Certifications</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <!-- HERO SECTION -->
         <div class="hero-section">
-            
             <div class="avatar-container">
-                <!-- NYONGEZA: Input iliyofichwa ya kuchagua picha -->
-                <input type="file" id="imageInput" accept="image/*">
-                
-                <!-- Fremu ya picha inayobonyezeka -->
-                <div class="avatar-frame" id="avatarTrigger">
-                    <div class="actual-photo" id="photoDisplay">
-                        <!-- Hapa ndipo patakapowekwa maandishi ya placeholder mara ya kwanza -->
-                        <div class="photo-placeholder" id="placeholderContent">
-                            <i class="fa-solid fa-user-shield"></i>
-                            <span>[ UPLOAD ]</span>
-                        </div>
-                        
-                        <!-- Kifuniko cha kubadilisha picha pindi mouse ikiwekwa juu (Hover Overlay) -->
-                        <div class="avatar-overlay">
-                            <i class="fa-solid fa-camera"></i>
-                            <span>Change Photo</span>
+                <label for="imageInput">
+                    <div class="avatar-frame">
+                        <div class="actual-photo" id="photoDisplay">
+                            <div class="photo-placeholder" id="placeholderContent">
+                                <i class="fa-solid fa-user-secret"></i>
+                                <span>NO PHOTO</span>
+                            </div>
+                            <div class="avatar-overlay">
+                                <i class="fa-solid fa-camera"></i>
+                                <span>Upload</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </label>
+                <input type="file" id="imageInput" accept="image/*">
             </div>
 
             <div class="hero-text">
                 <h1>Frank Karani</h1>
                 <div class="tagline">
-                    <i class="fa-solid fa-graduation-cap"></i> Cybersecurity Student @ IAA
+                    <i class="fa-solid fa-terminal"></i> Cybersecurity Freshman @ IAA 🇹🇿
                 </div>
-
+                
                 <div class="bullets-container">
-                    <div class="bullet-line"><span>&gt;</span> Ethical Hacker in Training</div>
-                    <div class="bullet-line"><span>&gt;</span> Focused on OWASP Top 10 & Web Security</div>
-                    <div class="bullet-line"><span>&gt;</span> Linux & Network Security Enthusiast</div>
-                    <div class="bullet-line"><span>&gt;</span>Planing to come TCRA cyber champion 2027</div>
-                </div Class="bullet-line"><span>&gt;</span>Cyber security student at IAA First year student</div>div>
+                    <div class="bullet-line"><span>&gt;</span> Ethical Hacker in Training & Penetration Tester.</div>
+                    <div class="bullet-line"><span>&gt;</span> Top 50 Nationally | TCRA CyberChampions 2025/26.🏆</div>
+                    <div class="bullet-line"><span>&gt;</span> Top 150 picoCTF | Bronze & Silver League.</div>
+                    <div class="bullet-line"><span>&gt;</span> Future TCRA Cyber Champion 2027 (4PP3X).🎯</div>
                 </div>
 
                 <div class="bio-quote">
-                    "Securing the digital frontier, one vulnerability at a time. Passionate about understanding the attacker's mindset to build unbreakable defenses and the comming  CYBER CHAMPION 2027."
+                    "Ulimwengu wa kiteknolojia unahitaji mifumo salama, thabiti na yenye tija. Passionate about understanding the attacker's mindset to build unbreakable defenses."
                 </div>
 
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
-                    <a href="#" class="btn btn-secondary"><i class="fa-solid fa-file-arrow-down"></i> View Resume</a>
+                    <a href="https://www.linkedin.com/in/frank-karani-47971b3b5" target="_blank" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Hire Me</a>
+                    <a href="/resume.pdf" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-code"></i> View Resume</a>
                 </div>
             </div>
         </div>
 
-        <!-- DOMAINS FOOTER SECTION -->
         <div class="domains-footer">
-            <div class="domains-title">Core Focus Areas</div>
+            <div class="domains-title">Specialization Focus</div>
             <div class="badge-list">
-                <div class="domain-badge badge-cyber"><i class="fa-solid fa-shield-halved"></i> PenTesting</div>
-                <div class="domain-badge badge-ai"><i class="fa-solid fa-brain"></i> Ai Security</div>
-                <div class="domain-badge badge-osint"><i class="fa-solid fa-magnifying-glass"></i> OSINT</div>
-                <div class="domain-badge badge-net"><i class="fa-solid fa-network-wired"></i> NetSec</div>
-                <div class="domain- badge badge-net"><i Class="fa-solid fa-network-wired"></i>FORTINE/div>
+                <div class="domain-badge badge-cyber">
+                    <i class="fa-solid fa-shield-halved"></i> Cyber Security
+                </div>
+                <div class="domain-badge badge-ai">
+                    <i class="fa-solid fa-brain"></i> Artificial Intelligence
+                </div>
+                <div class="domain-badge badge-osint">
+                    <i class="fa-solid fa-magnifying-glass"></i> OSINT
+                </div>
             </div>
         </div>
-
     </div>
 
-    <!-- NYONGEZA: JAVASCRIPT YA KUENDESHA MFUMO WA PICHA -->
     <script>
-        const avatarTrigger = document.getElementById('avatarTrigger');
+        // Msimbo wa kusoma na kubadilisha picha
         const imageInput = document.getElementById('imageInput');
         const photoDisplay = document.getElementById('photoDisplay');
         const placeholderContent = document.getElementById('placeholderContent');
 
-        // 1. Mtumiaji akibonyeza duara la picha, fungua sehemu ya kuchagua faili ya kompyuta
-        avatarTrigger.addEventListener('click', () => {
-            imageInput.click();
-        });
-
-        // 2. Mtumiaji akishachagua picha, isome na uiweke kama background ya duara husika
         imageInput.addEventListener('change', function() {
             const file = this.files[0];
             if (file) {
                 const reader = new FileReader();
-                
                 reader.addEventListener('load', function() {
-                    // Weka picha iliyochaguliwa
                     photoDisplay.style.backgroundImage = `url(${this.result})`;
-                    // Ficha icon ya mwanzo na maandishi ya "[ UPLOAD ]"
                     placeholderContent.style.display = 'none';
                 });
-
                 reader.readAsDataURL(file);
             }
         });
     </script>
-
 </body>
 </html>
