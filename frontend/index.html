@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRANK KARANI | Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <title>FRANK KARANI THE COMING TCRA CYBER CHAMPION 2027 (4PP3X)| Portfolio</title>
+    <script src="https://cloudflare.com"></script>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #0b0f19;
+            background-color: #a9bff4;
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -48,6 +48,7 @@
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 1px;
+            font-family: monospace;
         }
 
         .logo span {
@@ -83,6 +84,7 @@
             flex-shrink: 0;
         }
 
+        /* MBALIMBALI: Kuboresha fremu ili mtumiaji ajue inaweza kubonyezwa */
         .avatar-frame {
             width: 240px;
             height: 240px;
@@ -94,8 +96,17 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .avatar-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+        }
+
+        /* MBALIMBALI: Muundo unaoruhusu picha ya asili kuonekana vizuri ikipakiwa */
         .actual-photo {
             width: 100%;
             height: 100%;
@@ -106,19 +117,72 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
         }
 
-        .actual-photo i {
+        /* Kifuniko (Overlay) kitakachotokea mtumiaji akiweka mouse juu ya picha */
+        .avatar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .avatar-frame:hover .avatar-overlay {
+            opacity: 1;
+        }
+
+        .avatar-overlay i {
+            font-size: 32px;
+            color: #10b981;
+            margin-bottom: 5px;
+        }
+
+        .avatar-overlay span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Alama ya awali (Placeholder icon na maandishi) kabla picha haijachaguliwa */
+        .photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .photo-placeholder i {
             font-size: 60px;
             color: #10b981;
             margin-bottom: 10px;
         }
 
-        .actual-photo span {
+        .photo-placeholder span {
             font-size: 11px;
             font-weight: 700;
             color: #94a3b8;
             letter-spacing: 1.5px;
+        }
+
+        /* Ficha input ya faili isionekane kwenye muonekano */
+        #imageInput {
+            display: none;
         }
 
         .hero-text {
@@ -190,11 +254,13 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-primary {
             background-color: #10b981;
             color: #0b0f19;
+            border: none;
         }
 
         .btn-primary:hover {
@@ -266,6 +332,10 @@
                 border-left: none;
                 border-top: 4px solid #10b981;
                 border-radius: 0 0 8px 8px;
+                text-align: left;
+            }
+            .bullet-line {
+                justify-content: center;
             }
             .cta-buttons {
                 justify-content: center;
@@ -285,6 +355,7 @@
 
     <div class="portfolio-banner">
         
+        <!-- NAVBAR SECTION -->
         <div class="navbar">
             <div class="logo">FRANK<span>KARANI</span></div>
             <ul class="nav-links">
@@ -294,13 +365,27 @@
             </ul>
         </div>
 
+        <!-- HERO SECTION -->
         <div class="hero-section">
             
             <div class="avatar-container">
-                <div class="avatar-frame">
-                    <div class="actual-photo">
-                        <i class="fa-solid fa-user-shield"></i>
-                        <span>[ PHOTO ]</span>
+                <!-- NYONGEZA: Input iliyofichwa ya kuchagua picha -->
+                <input type="file" id="imageInput" accept="image/*">
+                
+                <!-- Fremu ya picha inayobonyezeka -->
+                <div class="avatar-frame" id="avatarTrigger">
+                    <div class="actual-photo" id="photoDisplay">
+                        <!-- Hapa ndipo patakapowekwa maandishi ya placeholder mara ya kwanza -->
+                        <div class="photo-placeholder" id="placeholderContent">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <span>[ UPLOAD ]</span>
+                        </div>
+                        
+                        <!-- Kifuniko cha kubadilisha picha pindi mouse ikiwekwa juu (Hover Overlay) -->
+                        <div class="avatar-overlay">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Change Photo</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,38 +393,71 @@
             <div class="hero-text">
                 <h1>Frank Karani</h1>
                 <div class="tagline">
-                    <i class="fa-solid fa-graduation-cap"></i> Cybersecurity Student @ IAA Arusha
+                    <i class="fa-solid fa-graduation-cap"></i> Cybersecurity Student @ IAA
                 </div>
-                
+
                 <div class="bullets-container">
-                    <div class="bullet-line"><span>>_</span> National CTF Competitor (TCRA Top 50)</div>
-                    <div class="bullet-line"><span>>_</span> Aspiring AI Red Teamer & Pen Tester</div>
+                    <div class="bullet-line"><span>&gt;</span> Ethical Hacker in Training</div>
+                    <div class="bullet-line"><span>&gt;</span> Focused on OWASP Top 10 & Web Security</div>
+                    <div class="bullet-line"><span>&gt;</span> Linux & Network Security Enthusiast</div>
+                    <div class="bullet-line"><span>&gt;</span>Planing to come TCRA cyber champion 2027</div>
+                </div Class="bullet-line"><span>&gt;</span>Cyber security student at IAA First year student</div>div>
                 </div>
 
                 <div class="bio-quote">
-                    "Securing the digital ecosystem through practical execution, deep intelligence, and offensive security testing."
+                    "Securing the digital frontier, one vulnerability at a time. Passionate about understanding the attacker's mindset to build unbreakable defenses and the comming  CYBER CHAMPION 2027."
                 </div>
 
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
-                    <a href="https://linkedin.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+                    <a href="#" class="btn btn-secondary"><i class="fa-solid fa-file-arrow-down"></i> View Resume</a>
                 </div>
             </div>
-
         </div>
 
+        <!-- DOMAINS FOOTER SECTION -->
         <div class="domains-footer">
             <div class="domains-title">Core Focus Areas</div>
             <div class="badge-list">
-                <div class="domain-badge badge-cyber"><i class="fa-solid fa-mask"></i> Ethical Hacking</div>
-                <div class="domain-badge badge-ai"><i class="fa-solid fa-robot"></i> AI Security & LLMs</div>
-                <div class="domain-badge badge-osint"><i class="fa-solid fa-magnifying-glass"></i> OSINT & SOCMINT</div>
-                <div class="domain-badge badge-net"><i class="fa-solid fa-server"></i> Network Defense</div>
+                <div class="domain-badge badge-cyber"><i class="fa-solid fa-shield-halved"></i> PenTesting</div>
+                <div class="domain-badge badge-ai"><i class="fa-solid fa-brain"></i> Ai Security</div>
+                <div class="domain-badge badge-osint"><i class="fa-solid fa-magnifying-glass"></i> OSINT</div>
+                <div class="domain-badge badge-net"><i class="fa-solid fa-network-wired"></i> NetSec</div>
+                <div class="domain- badge badge-net"><i Class="fa-solid fa-network-wired"></i>FORTINE/div>
             </div>
         </div>
 
     </div>
+
+    <!-- NYONGEZA: JAVASCRIPT YA KUENDESHA MFUMO WA PICHA -->
+    <script>
+        const avatarTrigger = document.getElementById('avatarTrigger');
+        const imageInput = document.getElementById('imageInput');
+        const photoDisplay = document.getElementById('photoDisplay');
+        const placeholderContent = document.getElementById('placeholderContent');
+
+        // 1. Mtumiaji akibonyeza duara la picha, fungua sehemu ya kuchagua faili ya kompyuta
+        avatarTrigger.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // 2. Mtumiaji akishachagua picha, isome na uiweke kama background ya duara husika
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.addEventListener('load', function() {
+                    // Weka picha iliyochaguliwa
+                    photoDisplay.style.backgroundImage = `url(${this.result})`;
+                    // Ficha icon ya mwanzo na maandishi ya "[ UPLOAD ]"
+                    placeholderContent.style.display = 'none';
+                });
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 </body>
 </html>
