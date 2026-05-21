@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { apiService } from './apiService';
 
-// Component declaration inayopokea isAdmin prop
+// Component declaration accepting isAdmin privilege context state
 const WriteUpFeed = ({ isAdmin }) => {
     const [posts, setPosts] = useState([]);
     const [filteredPosts, setFilteredPosts] = useState([]);
@@ -11,7 +11,7 @@ const WriteUpFeed = ({ isAdmin }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // Fetch data kutoka kwenye API component inapoload
+    // Fetch dynamic security reports on component mounting stage
     useEffect(() => {
         let isMounted = true; 
         const fetchPosts = async () => {
@@ -28,10 +28,10 @@ const WriteUpFeed = ({ isAdmin }) => {
             }
         };
         fetchPosts();
-        return () => { isMounted = false; };
+        return () => { isMounted = false; }; // Cleanup hook to prevent memory leaks
     }, []);
 
-    // Kushughulikia Live Search na Category Filtering kwa pamoja
+    // Handle asynchronous real-time text query and category filters simultaneously
     useEffect(() => {
         let results = posts;
 
@@ -51,7 +51,7 @@ const WriteUpFeed = ({ isAdmin }) => {
         setFilteredPosts(results);
     }, [searchQuery, selectedCategory, posts]);
 
-    // Handle delete ikiwa imesafisha state zote mbili vizuri
+    // Secure administrative report deletion handler syncing client state on success
     const handleDeletePost = async (id) => {
         if (!window.confirm("🔴 ALERT: Confirm destruction of this security report?")) return;
         try {
@@ -111,7 +111,7 @@ const WriteUpFeed = ({ isAdmin }) => {
                     {filteredPosts.map((post) => (
                         <div key={post._id} style={styles.card}>
                             
-                            {/* Dynamic header yenye Admin Delete button */}
+                            {/* Dynamic header row housing admin execution utilities */}
                             <div style={styles.cardHeader}>
                                 <span style={styles.badge}>{post.category}</span>
                                 {isAdmin && (
@@ -166,8 +166,8 @@ const styles = {
     summary: { fontSize: '0.95rem', color: '#cbd5e1', lineHeight: '1.5', marginBottom: '1.5rem', flexGrow: '1' },
     detailsDropdown: { marginTop: 'auto', border: '1px solid #334155', borderRadius: '4px', backgroundColor: '#0f172a', overflow: 'hidden' },
     summaryBtn: { padding: '0.75rem', color: '#10b981', cursor: 'pointer', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '0.9rem', outline: 'none', userSelect: 'none' },
-    fullContent: { padding: '1rem', borderTop: '1px solid #334155', backgroundColor: '#090d16', maxHeight: '350px', overflowY: 'auto' }, // Imerudishwa hapa kuzuia kadi kurefuka kupita kiasi
-    codeBlock: { margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', fontSize: '0.85rem', color: '#a7f3d0' }, // Imerudishwa kuwa break-word
+    fullContent: { padding: '1rem', borderTop: '1px solid #334155', backgroundColor: '#090d16', maxHeight: '350px', overflowY: 'auto' }, 
+    codeBlock: { margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', fontSize: '0.85rem', color: '#a7f3d0' }, 
     centerText: { textAlign: 'center', color: '#94a3b8', fontSize: '1.1rem', fontFamily: 'monospace', padding: '3rem' },
     errorText: { textAlign: 'center', color: '#ef4444', fontSize: '1.1rem', fontFamily: 'monospace', padding: '3rem' }
 };
