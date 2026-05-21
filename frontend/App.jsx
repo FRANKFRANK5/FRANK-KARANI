@@ -29,12 +29,22 @@ function App() {
     alert('Logged out securely.');
   };
 
-  // Helper function to handle flawless single-page routing vectors
+  // Helper function to handle flawless single-page routing vectors with geometric fallback calculation
   const scrollToSection = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
+      // Primary scroll vector injection
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Secondary coordinate offset fallback execution (offsets top nav panel footprint)
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: topOffset,
+        behavior: 'smooth'
+      });
+    } else {
+      console.error(`[SYS.ERROR]: Target segment ID #${id} not detected within the DOM layer.`);
     }
   };
 
@@ -49,7 +59,8 @@ function App() {
     { id: 2, title: 'picoCTF Bronze & Silver League Achievement', fileUrl: '/certificates/picoctf_league.pdf', date: '2026' },
     { id: 3, title: 'Fortinet Getting Started in Cybersecurity', fileUrl: '/certificates/fortinet_nse.pdf', date: '2026' }
   ];
-return (
+
+  return (
     <div style={styles.appContainer}>
       {/* --- TOP NAVBAR NAVIGATION SYSTEM --- */}
       <nav style={styles.navbar}>
@@ -148,13 +159,13 @@ return (
   );
 }
 
-// Hakikisha huku chini stylesheet yako ina 'cursor: pointer' kwenye navLink
+// Global UI Layout Rules Sheet (Enforcing clean, pointer-driven navigation links)
 const styles = {
   appContainer: { backgroundColor: '#0f172a', minHeight: '100vh', fontFamily: 'monospace', color: '#f8fafc', paddingBottom: '4rem' },
   navbar: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#1e293b', borderBottom: '1px solid #334155', position: 'sticky', top: 0, zIndex: 100 },
   navBrand: { fontSize: '1.25rem', fontWeight: 'bold', color: '#38bdf8' },
   navLinks: { display: 'flex', gap: '1.5rem', alignItems: 'center' },
-  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s', cursor: 'pointer' }, // Hapa
+  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s', cursor: 'pointer' },
   loginBtn: { backgroundColor: '#0284c7', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   logoutBtn: { backgroundColor: '#b91c1c', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   adminDashboard: { backgroundColor: '#0b0f19', padding: '1.5rem', borderBottom: '2px dashed #0284c7' },
