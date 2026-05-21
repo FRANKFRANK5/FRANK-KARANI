@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import WriteUpFeed from './WriteUpFeed'; // Importing clean dynamic report feed
+import WriteUpFeed from './WriteupFeed'; // Importing clean dynamic report feed
 import Login from './Login';
 import AddWriteUp from './AddWriteUp';
 import { apiService } from './apiService';
