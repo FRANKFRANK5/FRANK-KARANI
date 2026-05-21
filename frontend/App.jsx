@@ -42,11 +42,21 @@ function App() {
         <div style={styles.navBrand}>⚡ CyberPortfolio.db</div>
         <div>
           {isAdmin ? (
-            <button onClick={handleLogout} style={styles.logoutBtn}>
+            <button 
+              onClick={handleLogout} 
+              style={styles.logoutBtn}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#991b1b'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#b91c1c'}
+            >
               Admin Logout 🔓
             </button>
           ) : (
-            <button onClick={() => setShowLoginModal(!showLoginModal)} style={styles.loginBtn}>
+            <button 
+              onClick={() => setShowLoginModal(!showLoginModal)} 
+              style={styles.loginBtn}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#0369a1'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#0284c7'}
+            >
               {showLoginModal ? 'Close Login X' : 'Admin Login 🔒'}
             </button>
           )}
@@ -63,8 +73,22 @@ function App() {
 
       {/* --- MODAL AUTHENTICATION INTERFACE LAYER --- */}
       {showLoginModal && !isAdmin && (
-        <div style={styles.modalOverlay}>
-          <Login onLoginSuccess={handleLoginSuccess} />
+        <div style={styles.modalOverlay} onClick={() => setShowLoginModal(false)}>
+          {/* stopPropagation inazuia modal isijifunge mtumiaji akibofya ndani ya fomu ya login */}
+          <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <div style={styles.modalHeader}>
+              <span style={{ color: '#ef4444', fontFamily: 'monospace', fontWeight: 'bold' }}>[ AUTH_REQUIRED ]</span>
+              <button 
+                onClick={() => setShowLoginModal(false)} 
+                style={styles.closeModalBtn}
+                onMouseEnter={(e) => e.target.style.color = '#ef4444'}
+                onMouseLeave={(e) => e.target.style.color = '#94a3b8'}
+              >
+                &times;
+              </button>
+            </div>
+            <Login onLoginSuccess={handleLoginSuccess} />
+          </div>
         </div>
       )}
 
@@ -106,6 +130,7 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
     fontWeight: 'bold',
+    transition: 'background 0.2s ease-in-out',
   },
   logoutBtn: {
     backgroundColor: '#b91c1c',
@@ -115,6 +140,7 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
     fontWeight: 'bold',
+    transition: 'background 0.2s ease-in-out',
   },
   adminDashboard: {
     backgroundColor: '#0b0f19',
@@ -134,8 +160,41 @@ const styles = {
     fontFamily: 'monospace',
   },
   modalOverlay: {
-    padding: '1rem',
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'rgba(15, 23, 42, 0.85)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 9999,
+    backdropFilter: 'blur(4px)',
+  },
+  modalContent: {
+    backgroundColor: '#1e293b',
+    padding: '2rem',
+    borderRadius: '8px',
+    border: '1px solid #334155',
+    maxWidth: '450px',
+    width: '90%',
+    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+  },
+  modalHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '1.5rem',
+  },
+  closeModalBtn: {
+    background: 'none',
+    border: 'none',
+    color: '#94a3b8',
+    fontSize: '1.5rem',
+    cursor: 'pointer',
+    lineHeight: 1,
+    transition: 'color 0.2s ease-in-out',
   },
   mainContent: {
     padding: '1rem 0',
