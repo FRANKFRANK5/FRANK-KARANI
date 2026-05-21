@@ -1,18 +1,37 @@
-import React from 'react';
-import WriteUpFeed from './WriteupFeed';
+// Dynamic Environmental Routing Vector for Backend Handshake
+const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000/api'
+  : 'https://frank-portfolio-backend-9ok2.onrender.com/api'; 
+  // Enforcing strict HTTPS protocol routing to prevent browser Mixed Content blockades
 
-function WriteupsPage({ onBack, isAdmin, refreshTrigger }) {
-  return (
-    <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto', fontFamily: 'monospace', color: '#f8fafc' }}>
-      <button onClick={onBack} style={{ backgroundColor: '#1e293b', color: '#38bdf8', border: '1px solid #334155', padding: '0.5rem 1rem', cursor: 'pointer', marginBottom: '2rem', borderRadius: '4px' }}>
-        &lt;-- Back to Main Matrix
-      </button>
-      <h2 style={{ color: '#10b981', borderBottom: '1px solid #334155', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>[💻] RECENT CYBER WRITE-UPS & POF</h2>
-      <div style={{ backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: '12px', padding: '1rem' }}>
-        <WriteUpFeed key={refreshTrigger} isAdmin={isAdmin} />
-      </div>
-    </div>
-  );
-}
+export const apiService = {
+  // 1. Fetch all security reports from backend database
+  getWriteUps: async () => {
+    const response = await fetch(`${BASE_URL}/writeups`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  },
 
-export default WriteupsPage;
+  // 2. Destructive administrative privilege call to remove an exploit write-up
+  deleteWriteUp: async (id) => {
+    const token = localStorage.getItem('adminToken');
+    const response = await fetch(`${BASE_URL}/writeups/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`Unauthorized or Failed operation status: ${response.status}`);
+    }
+    return await response.json();
+  },
+
+  // 3. Clear privileged session tokens upon security termination
+  logout: () => {
+    localStorage.removeItem('adminToken');
+  }
+};
