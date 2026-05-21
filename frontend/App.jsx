@@ -49,12 +49,11 @@ function App() {
     { id: 2, title: 'picoCTF Bronze & Silver League Achievement', fileUrl: '/certificates/picoctf_league.pdf', date: '2026' },
     { id: 3, title: 'Fortinet Getting Started in Cybersecurity', fileUrl: '/certificates/fortinet_nse.pdf', date: '2026' }
   ];
-
-  return (
+return (
     <div style={styles.appContainer}>
       {/* --- TOP NAVBAR NAVIGATION SYSTEM --- */}
       <nav style={styles.navbar}>
-        <div style={styles.navBrand}>⚡ FRANK.SYS</div>
+        <div style={styles.navBrand}>⚡ FRANK (4PP3X)</div>
         <div style={styles.navLinks}>
           <a href="#home" onClick={(e) => scrollToSection(e, 'home')} style={styles.navLink}>Home</a>
           <a href="#certifications" onClick={(e) => scrollToSection(e, 'certifications')} style={styles.navLink}>Certifications</a>
@@ -107,7 +106,7 @@ function App() {
       </section>
 
       {/* --- 1. DOWNLOAD GATEWAY ARCHIVES FOR CERTIFICATES (#certifications) --- */}
-      <section id="certifications" style={styles.sectionWrapper}>
+      <section id="certifications" style={{ ...styles.sectionWrapper, padding: '100px 0' }}>
         <h2 style={styles.sectionHeading}>[🏆] CERTIFICATIONS & ARCHIVES</h2>
         <div style={styles.certGrid}>
           {certificates.map(cert => (
@@ -126,7 +125,7 @@ function App() {
       </section>
 
       {/* --- 2. SECURITY INTRUSION LABORATORY FEED (#writeups) --- */}
-      <section id="writeups" style={styles.sectionWrapper}>
+      <section id="writeups" style={{ ...styles.sectionWrapper, padding: '100px 0' }}>
         <h2 style={styles.sectionHeading}>[💻] RECENT CYBER WRITE-UPS & POF</h2>
         <div style={styles.feedContainer}>
           <WriteUpFeed key={refreshTrigger} isAdmin={isAdmin} />
@@ -149,13 +148,13 @@ function App() {
   );
 }
 
-// Global Clean Cyber Terminal Layout Stylesheet
+// Hakikisha huku chini stylesheet yako ina 'cursor: pointer' kwenye navLink
 const styles = {
   appContainer: { backgroundColor: '#0f172a', minHeight: '100vh', fontFamily: 'monospace', color: '#f8fafc', paddingBottom: '4rem' },
   navbar: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#1e293b', borderBottom: '1px solid #334155', position: 'sticky', top: 0, zIndex: 100 },
   navBrand: { fontSize: '1.25rem', fontWeight: 'bold', color: '#38bdf8' },
   navLinks: { display: 'flex', gap: '1.5rem', alignItems: 'center' },
-  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s', cursor: 'pointer' },
+  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s', cursor: 'pointer' }, // Hapa
   loginBtn: { backgroundColor: '#0284c7', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   logoutBtn: { backgroundColor: '#b91c1c', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   adminDashboard: { backgroundColor: '#0b0f19', padding: '1.5rem', borderBottom: '2px dashed #0284c7' },
