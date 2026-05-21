@@ -13,6 +13,9 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (token) setIsAdmin(true);
+
+    // Enforce smooth scroll behavior globally on component mount
+    document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
   const handleLoginSuccess = () => {
@@ -24,6 +27,15 @@ function App() {
     apiService.logout();
     setIsAdmin(false);
     alert('Logged out securely.');
+  };
+
+  // Helper function to handle flawless single-page routing vectors
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Force re-fetch inside child feed layer when a new exploit write-up drops
@@ -44,9 +56,9 @@ function App() {
       <nav style={styles.navbar}>
         <div style={styles.navBrand}>⚡ FRANK.SYS</div>
         <div style={styles.navLinks}>
-          <a href="#home" style={styles.navLink}>Home</a>
-          <a href="#certifications" style={styles.navLink}>Certifications</a>
-          <a href="#writeups" style={styles.navLink}>Write-Ups</a>
+          <a href="#home" onClick={(e) => scrollToSection(e, 'home')} style={styles.navLink}>Home</a>
+          <a href="#certifications" onClick={(e) => scrollToSection(e, 'certifications')} style={styles.navLink}>Certifications</a>
+          <a href="#writeups" onClick={(e) => scrollToSection(e, 'writeups')} style={styles.navLink}>Write-Ups</a>
           {isAdmin ? (
             <button onClick={handleLogout} style={styles.logoutBtn}>Logout 🔓</button>
           ) : (
@@ -143,7 +155,7 @@ const styles = {
   navbar: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#1e293b', borderBottom: '1px solid #334155', position: 'sticky', top: 0, zIndex: 100 },
   navBrand: { fontSize: '1.25rem', fontWeight: 'bold', color: '#38bdf8' },
   navLinks: { display: 'flex', gap: '1.5rem', alignItems: 'center' },
-  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' },
+  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s', cursor: 'pointer' },
   loginBtn: { backgroundColor: '#0284c7', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   logoutBtn: { backgroundColor: '#b91c1c', color: '#fff', border: 'none', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' },
   adminDashboard: { backgroundColor: '#0b0f19', padding: '1.5rem', borderBottom: '2px dashed #0284c7' },
